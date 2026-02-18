@@ -10,10 +10,13 @@ from src.feature_engineering import (
 )
 from src.model_training import train_model
 
-
-
-# Just give path as STRING (not pd.read_csv)
 DATA_PATH = "data/raw/olympics_dataset.csv"
+
+if not os.path.exists(DATA_PATH):
+    url = "https://drive.google.com/file/d/10-QqP7aB5dPdM4rcEBK1Fd8QmF3SKVBX/view?usp=sharing"
+    df = pd.read_csv(url)
+else:
+    df = pd.read_csv(DATA_PATH)
 
 def main():
     # Load
@@ -41,4 +44,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
